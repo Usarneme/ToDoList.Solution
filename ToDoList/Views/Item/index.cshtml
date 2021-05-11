@@ -1,3 +1,5 @@
+@using ToDoList.Models;
+
 <!DOCTYPE html>
 <html>
 
@@ -17,13 +19,17 @@
     </nav>
     <div class="container card todo_list">
       <h3>Current ToDos:</h3>
-      @* TODO LIST GOES HERE *@
+      <ul>
+        @foreach (Item todoItem in Model)
+        {
+          <li>@todoItem.Description</li>
+        }
+      </ul>
     </div>
     <br />
     <div class="container card new_todos_form">
       <h3>New ToDos:</h3>
-      <form>
-        @* CREATE THE FORM FOR A NEW TODO ITEM *@
+      <form method="post" action="/items">
         <label for="new_item">Enter ToDo:</label>
         <input type="text" id="new_item" name="new_item" />
         <button class="btn btn-outline-info" type="submit">Submit New ToDo</button>
