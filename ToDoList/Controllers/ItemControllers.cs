@@ -11,7 +11,7 @@ namespace ToDoList.Controllers
     public ActionResult Index()
     {
       // contact the model and get all the current items in the todo list
-      List<ToDoList.Models.Item> allTodos = ToDoList.Models.Item.GetAll();
+      List<Item> allTodos = Item.GetAll();
       return View(allTodos);
     }
 
@@ -24,6 +24,14 @@ namespace ToDoList.Controllers
       // redirect back to get the items page
       return RedirectToAction("Index");
 
+    }
+
+    [HttpPost("/items/delete/{description}")]
+    public ActionResult DeleteTodo(string description)
+    {
+      // first find the item, and delete from the items list
+      Item.DeleteOne(description);
+      return RedirectToAction("Index");
     }
 
   }

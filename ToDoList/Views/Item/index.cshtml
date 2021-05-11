@@ -14,15 +14,21 @@
     <h1>ToDo List</h1>
     <nav class="container mb-5">
       <a href="/">Home</a>
-      <br />
-      <a href="/items/new">Click here to create a new ToDo Item</a>
     </nav>
     <div class="container card todo_list">
       <h3>Current ToDos:</h3>
-      <ul>
+      <ul class="d-flex flex-column">
         @foreach (Item todoItem in Model)
         {
-          <li>@todoItem.Description</li>
+
+          <li class="d-flex flex-row">
+            <span>@todoItem.Description</span>
+            <span>
+              <form method="post" action="/items/delete/@todoItem.Description">
+                <button class="btn btn-outline-danger btn-xs" type="submit">Delete Item</button>
+              </form>
+            </span>
+          </li>
         }
       </ul>
     </div>

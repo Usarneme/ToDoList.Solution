@@ -23,6 +23,11 @@ namespace ToDoList.Models
       _instances.Clear();
     }
 
+    public static void DeleteOne(string description)
+    {
+      _instances.RemoveAll(todo => todo.Description == description);
+    }
+
   }
 }
     // - must be declared static because it returns a static variable (_instances)
