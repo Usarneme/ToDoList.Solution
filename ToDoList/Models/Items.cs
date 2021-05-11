@@ -10,7 +10,7 @@ namespace ToDoList.Models
     public Item(string description)
     {
       Description = description;
-      _instances.Add(this); // New code.
+      _instances.Add(this);
     }
 
     public static List<Item> GetAll()

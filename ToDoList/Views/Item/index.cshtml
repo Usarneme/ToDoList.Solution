@@ -1,1 +1,35 @@
-<h1>Item Home</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ToDo List!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1>ToDo List</h1>
+    <nav class="container mb-5">
+      <a href="/">Home</a>
+      <br />
+      <a href="/items/new">Click here to create a new ToDo Item</a>
+    </nav>
+    <div class="container card todo_list">
+      <h3>Current ToDos:</h3>
+      @* TODO LIST GOES HERE *@
+    </div>
+    <br />
+    <div class="container card new_todos_form">
+      <h3>New ToDos:</h3>
+      <form>
+        @* CREATE THE FORM FOR A NEW TODO ITEM *@
+        <label for="new_item">Enter ToDo:</label>
+        <input type="text" id="new_item" name="new_item" />
+        <button class="btn btn-outline-info" type="submit">Submit New ToDo</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
