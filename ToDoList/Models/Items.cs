@@ -11,10 +11,9 @@ namespace ToDoList.Models
     {
     Description = description;
      _instances.Add(this); // New code.
-    }  
+    }
 
     public static List<Item> GetAll()
-    
 
      // - must be declared static because it returns a static variable (_instances)
     // - variables & methods *dealing with entire classes* must be static
