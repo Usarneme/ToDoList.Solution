@@ -6,7 +6,7 @@ namespace ToDoList.Models
   public class Item
   {
     public string Description { get; set; }
-    public int Id { get; }
+    public int Id { get; set; }
 
     public Item(string description)
     {
@@ -21,6 +21,21 @@ namespace ToDoList.Models
       Id = id;
     }
 
+    public override bool Equals(System.Object otherItem)
+    {
+      if (!(otherItem is Item))
+      {
+        return false;
+      }
+      else
+      {
+        Item newItem = (Item) otherItem;
+        bool idEquality = (this.Id == newItem.Id);
+        bool descriptionEquality = (this.Description == newItem.Description);
+        return (idEquality && descriptionEquality);
+      }
+    }
+
     public static List<Item> GetAll()
 
     {
@@ -32,7 +47,7 @@ namespace ToDoList.Models
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       while (rdr.Read())
       {
-        int itemId = rdr.GetInt32(0);
+        int itemId = (int) rdr.GetInt32(0);
         string itemDescription = rdr.GetString(1);
         Item newItem = new Item(itemDescription, itemId);
         allItems.Add(newItem);
@@ -52,6 +67,25 @@ namespace ToDoList.Models
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"DELETE FROM items;";
       cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO items (description) VALUES (@ItemDescription);";
+      MySqlParameter description = new MySqlParameter();
+      description.ParameterName = "@ItemDescription";
+      description.Value = this.Description;
+      cmd.Parameters.Add(description);
+      cmd.ExecuteNonQuery();
+      Id = (int) cmd.LastInsertedId;
       conn.Close();
       if (conn != null)
       {
