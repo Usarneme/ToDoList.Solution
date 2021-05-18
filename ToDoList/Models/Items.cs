@@ -36,6 +36,11 @@ namespace ToDoList.Models
       }
     }
 
+    public override int GetHashCode()
+    {
+      return base.GetHashCode();
+    }
+
     public static List<Item> GetAll()
 
     {

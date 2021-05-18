@@ -52,6 +52,17 @@ namespace ToDoList.Tests
       CollectionAssert.AreEqual(testList, result);
     }
 
+    [TestMethod]
+    public void Find_ReturnsCorrectItemFromDatabase_Item()
+    {
+      Item newItem = new Item("mow da lawn");
+      newItem.Save();
+      Item newItem2 = new Item("warsh the durshes");
+      newItem2.Save();
+      Item foundItem = Item.Find(newItem.Id);
+      Assert.AreEqual(newItem, foundItem);
+    }
+
     // [TestMethod]
     // public void GetDescription_ReturnsDescription_String()
     // {
