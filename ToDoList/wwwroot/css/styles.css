@@ -2,3 +2,31 @@ body {
   background: lightblue;
   min-height: 100vh;
 }
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+nav {
+  min-height: 44px;
+  background: #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 10px;
+}
+
+main {
+  min-height: 90vh;
+  background: rgba(255,255,255,0.15);
+}
+
+h1,h2,h3,h4,h5 {
+  text-align: center;
+}

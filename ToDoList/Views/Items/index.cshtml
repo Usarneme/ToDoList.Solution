@@ -1,12 +1,12 @@
 @using ToDoList.Models;
+@model List<ToDoList.Models.Item>;
 
 @{
   Layout = "_Layout";
 }
 
-
 <div class="container-fluid">
-  <h1>ToDo List</h1>
+  <h1>ToDo List Items</h1>
   @if (Model.Count == 0)
   {
     <p>There are no items in the list.</p>
@@ -16,12 +16,15 @@
     <ul>
       @foreach (Item item in Model)
       {
-        <li><a href='/items/@item.Id'>@item.Description</a></li>
+        <li>
+          @* <a href='/items/@item.Id'>@item.Description</a> *@
+          @Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })
+        </li>
       }
     </ul>
   }
 
-  <a href="/items/new">Add a new item.</a>
+  <p>@Html.ActionLink("Add new item", "Create")</p>
 
   <form action="/items/delete" method="post">
     <button type="submit" name="button">Clear All Items</button>
