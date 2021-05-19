@@ -4,15 +4,18 @@
   Layout = "_Layout";
 }
 
-<h3>Here are all the items in this category:</h3>
+<div class="container-fluid">
+  <h3>Here are all the items in this category:</h3>
+  <div class="container content">
+    <ol>
+    @foreach (Item item in @Model["items"])
+    {
+      @* <li><a href='/categories/@Model["category"].Id/items/@item.Id'>@item.Description</a></li> *@
+    }
+    </ol>
 
-<ol>
-@foreach (Item item in @Model["items"])
-{
-  @* <li><a href='/categories/@Model["category"].Id/items/@item.Id'>@item.Description</a></li> *@
-}
-</ol>
-
-<p><a href='/categories/@Model["category"].Id/items/new'>Add a new item</a></p>
-<p><a href='/categories'>Return to category list</a></p>
-<p><a href='/'>Return to Main Page</a></p>
+    <p><a href='/categories/@Model["category"].Id/items/new'>Add a new item</a></p>
+    <p><a href='/categories'>Return to category list</a></p>
+    <p><a href='/'>Return to Main Page</a></p>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+@model ToDoList.Models.Category;
+
+@{
+  Layout = "_Layout";
+}
+
+<div class="container-fluid">
+  <h3 class="pt-5 pb-3">Add a category</h3>
+  <div class="container content">
+    <p>Add a category here:</p>
+    @using (Html.BeginForm())
+    {
+      @Html.LabelFor(model => model.Name)
+      @Html.TextBoxFor(model => model.Name)
+
+      <input type="submit" class="btn btn-block btn-primary" value="Add new category" />
+    }
+
+    <p>@Html.ActionLink("Show all categories", "Index")</p>
+  </div>
+</div>

@@ -8,9 +8,9 @@
   </head>
   <body>
     <nav>
-      <a href="/">Home</a>
-      <a href="/items">Tasks</a>
-      <a href="/categories">Categories</a>
+      @Html.ActionLink("Home", "Index", "Home")
+      @Html.ActionLink("Tasks", "Index", "Items")
+      @Html.ActionLink("Categories", "Index", "Categories")
     </nav>
     <main>
       @RenderBody()

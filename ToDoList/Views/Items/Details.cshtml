@@ -4,7 +4,11 @@
   Layout = "_Layout";
 }
 
-<h2>Item Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<div class="container-fluid">
+  <h2 class="pt-5 pb-3">Item Details</h2>
+  <hr />
+  <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+  <p>@Html.ActionLink("Back to list", "Index")</p>
+  <P>@Html.ActionLink("Edit Item", "Edit", new { id = Model.ItemId})</P>
+  <p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })</p>
+</div>
