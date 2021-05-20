@@ -17,7 +17,7 @@
 
     @foreach (Category category in Model)
     {
-      <h4><a href='/categories/@category.CategoryId'>@category.Name</a></h4>
+      <h4><a href='/categories/Details/@category.CategoryId'>@category.Name</a></h4>
     }
 
     @Html.ActionLink("Add new Category", "Create", "Categories", null, new { @class = "btn btn-lg btn-primary" })

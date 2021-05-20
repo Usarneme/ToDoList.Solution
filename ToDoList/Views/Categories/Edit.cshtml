@@ -1,0 +1,22 @@
+@model ToDoList.Models.Category;
+
+@{
+  Layout = "_Layout";
+}
+
+<div class="container-fluid">
+  <h2 class="pt-5 pb-3">Edit</h2>
+  <h4 class="pb-5">Edit this task: @Html.DisplayFor(model => model.Name)</h4>
+  <div class="form_container">
+    @using (Html.BeginForm())
+    {
+      @Html.HiddenFor(model => model.CategoryId)
+
+      @Html.LabelFor(model => model.Name)
+      @Html.EditorFor(model => model.Name)
+
+      <input type="submit" class="btn btn-block btn-primary" value="Save" />
+    }
+  </div>
+  <p>@Html.ActionLink("Back to list", "Index")</p>
+</div>

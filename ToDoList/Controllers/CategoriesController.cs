@@ -35,10 +35,15 @@ namespace ToDoList.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("categories/details/{id}")]
     public ActionResult Details(int id)
     {
       Category thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
-      return View(thisCategory);
+      IEnumerable<Item> theseItems = _db.Items.Where(item => item.CategoryId == id);
+      Dictionary<string, object> myModels = new Dictionary<string, object>();
+      myModels.Add("items", theseItems);
+      myModels.Add("category", thisCategory);
+      return View(myModels);
     }
 
     public ActionResult Edit(int id)
