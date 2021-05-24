@@ -1,21 +1,30 @@
-@using ToDoList.Models;
+@model ToDoList.Models.Category;
 
 @{
   Layout = "_Layout";
 }
 
 <div class="container-fluid">
-  <h3>Here are all the items in this category:</h3>
-  <div class="container content">
-    <ol>
-    @foreach (Item item in @Model["items"])
-    {
-      <li><a href='/categories/@Model["category"].CategoryId/items/@item.ItemId'>@item.Description</a></li>
-    }
-    </ol>
+  <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+  @if (@Model.JoinEntities.Count == 0)
+  {
+    <p>This category does not contain any items.</p>
+  }
+  else
+  {
+    <h4>Here are all the items in this category:</h4>
+    <div class="container content">
+      <ul>
+      @foreach (var join in Model.JoinEntities)
+      {
+        <li>@join.Item.Description</li>
+        @* <li><a href='/categories/@Model["category"].CategoryId/items/@item.ItemId'>@item.Description</a></li> *@
+      }
+      </ul>
+    </div>
+  }
 
-    <p><a href='/categories/@Model["category"].CategoryId/items/new'>Add a new item</a></p>
-    <p><a href='/categories'>Return to category list</a></p>
-    <p><a href='/'>Return to Main Page</a></p>
-  </div>
+  @* <p><a href='/categories/@Model["category"].CategoryId/items/new'>Add a new item</a></p> *@
+  <p><a href='/categories'>Return to category list</a></p>
+  <p><a href='/'>Return to Main Page</a></p>
 </div>

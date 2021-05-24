@@ -12,7 +12,7 @@
       @Html.LabelFor(model => model.Description)
       @Html.TextBoxFor(model => model.Description)
 
-      @Html.LabelFor(model => model.Category)
+      @Html.Label("Select Category")
       @Html.DropDownList("CategoryId")
 
       <input type="submit" class="btn btn-block btn-primary" value="Add new task" />
