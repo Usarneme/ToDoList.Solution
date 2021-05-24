@@ -72,7 +72,7 @@ namespace ToDoList.Controllers
     public ActionResult AddCategory(int id)
     {
       var thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
-      ViewBag.CategoryId = new SelectList(_db.CategoryItems, "CategoryId", "Name");
+      ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
       return View(thisItem);
     }
 
